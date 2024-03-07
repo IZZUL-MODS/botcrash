@@ -208,8 +208,7 @@ bot.onText(/\/clear/, (msg) => {
 //menu crash
   bot.onText(/\/crash1/, (msg) => {
   const chatId = msg.chat.id; 
-  if (isAdmin(msg.from.id)) {
-    addPremiumUser(userId);
+  if (isPremiumUser(userId)) {
   bot.sendMessage(chatId, "Virus Crash Akun And Group Telegram 🦠👾\n\n" +
     "🔥 Klik Tautan Di Bawah 🔥",
     {
@@ -224,14 +223,13 @@ bot.onText(/\/clear/, (msg) => {
     }
     );  
 } else {
-    bot.sendMessage(msg.chat.id, 'Only admin can add premium users.');
+    bot.sendMessage(msg.chat.id, 'Only Users Premium Who can use this feature.');
   }
 });
 
 bot.onText(/\/crash2/, (msg) => {
   const chatId = msg.chat.id; 
-  if (isAdmin(msg.from.id)) {
-    addPremiumUser(userId);
+  if (isPremiumUser(userId)) {
   bot.sendMessage(chatId, "Virus Crash Akun And Group Telegram 🦠👾\n\n" +
     "🔥 Klik Tautan Di Bawah 🔥",
     {
@@ -246,7 +244,7 @@ bot.onText(/\/crash2/, (msg) => {
     }
   );
 } else {
-    bot.sendMessage(msg.chat.id, 'Only admin can add premium users.');
+    bot.sendMessage(msg.chat.id, 'Only Users Premium Who can use this feature.');
   }
 });
 
@@ -274,5 +272,6 @@ bot.onText(/\/cekprem (.+)/, (msg, match) => {
     bot.sendMessage(chatId, 'ID ' + requestedUserId + ' adalah pengguna non-premium. ⭐');
   }
 });
+
   // Jalankan bot
   bot.startPolling()
