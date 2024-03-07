@@ -1,0 +1,25 @@
+{
+  "name": "tdbot3",
+  "version": "1.0.0",
+  "description": "nit",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm install request"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IZZUL-MODS/tdbot3.git"
+  },
+  "keywords": [
+    "p"
+  ],
+  "author": "IZZUL-MODS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IZZUL-MODS/tdbot3/issues"
+  },
+  "homepage": "https://github.com/IZZUL-MODS/tdbot3#readme",
+  "dependencies": {
+    "react-facebook-login": "^4.1.1"
+  }
+}
