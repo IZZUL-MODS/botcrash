@@ -1,0 +1,17 @@
+Cara Run Di replit :
+1. npm install node-telegram-bot-api
+2. npm install axios
+3. npm install telegraf
+4. npm install express
+5. node index.js
+
+Cara Run Di Termux :
+1. pkg install git
+2. git clone https://github.com/IZZUL-MODS/botcrash
+3. cd /sdcard/botcrash
+4. pkg install nodejs
+5. npm install node-telegram-bot-api
+6. npm install axios
+7. npm install telegraf
+8. npm install express
+9. node index.js
