@@ -6,7 +6,7 @@ const express = require('express');
 const fs = require('fs');
 const { exec } = require('child_process');
 
-const token = '7130267623:AAFLSpnQmo0vcslxrx9AuRHaqWGqwIplZDo';
+const token = '7185347645:AAFpeIogrSBzCBd40GQfIrZZrW3BcheNx00';
 const bot = new TelegramBot(token, {polling: true});
 const adminId = '1891941853'; // ID admin, ganti dengan id akun mu
 const premiumUserDB = './premiumUsers.json';
@@ -94,19 +94,18 @@ bot.onText(/\/delprem (.+)/, (msg, match) => {
 // Menampilkan menu bot 
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id; 
-  bot.sendMessage(chatId, "Hii Kak 🥰\n\n╔═══《 BOT INFO 》════\n╠❏ ɴᴀᴍᴀ : ɪᴢᴢᴜʟ ᴄʀᴀsʜ ʙᴏᴛ\n╠❏ ᴜsᴇʀɴᴀᴍᴇ ʙᴏᴛ : @izzulcrash_bot\n╠❏ ᴜsᴇʀɴᴀᴍᴇ ᴏᴡɴᴇʀ : @IzzulMods\n╚════════════════⊱\n\n" +
-    "USER MENU ⬇️\n" +
+  bot.sendMessage(chatId, "USER MENU ⬇️\n" +
     "/start - untuk memulai bot\n" +
     "/testi - untuk melihat Channel Testiomi Owner\n" +
-    "/cekprem - untuk cek status premium Anda\n" +
+    "/cekprem id - untuk cek status premium Anda\n" +
     "/clear - untuk menghapus chat di bot ini\n" +
-    "/tutor - cara pake bot crash nya\n\n" +
-    "/crash1 - untuk crashin group/akun telegram orang\n" +
-    "/crash2 - untuk crashin group/akun telegram orang\n" +
-    "ADMIN MENU ⬇️" +
+    "/tutor - cara pake bot crash nya\n" +
+    "/crash1 - untuk crash in group/akun telegram orang\n" +
+    "/crash2 - untuk crash in group/akun telegram orang\n" +
+    "ADMIN MENU ⬇️\n" +
         "/clonebot - untuk ngeclone bot ini\n" +
         "/addprem - untuk menambahkan akses premium seseorang\n" +
-        "/cekprem - untuk menghapuz akses premium seseorang\n" +
+        "/delprem - untuk menghapus akses premium seseorang\n" +
     "🔥 *INGIN MEMBELI SC / JADI MURID CRASH HUBUNGI SAYA DI BAWAH👇* 🔥",
     {
       reply_markup: {
@@ -146,7 +145,7 @@ bot.onText(/\/tutor/, (msg) => {
         const premiumUsers = new Set(JSON.parse(data)); // Baca data premiumUsers dari file JSON
 
         if (premiumUsers.has(msg.from.id.toString())) {
-            bot.sendMessage(msg.chat.id, 'hai, ' + (msg.from.username || 'Unknown') + ' cara pake bot crash nya gini\n1./crash1\n2./crash2', {
+            bot.sendMessage(msg.chat.id, 'hai, ' + (msg.from.username || 'Unknown') + ' cara pake bot crash nya lu ketik command di bawah\n1. /crash1\n2. /crash2', {
                 reply_markup: {
                     inline_keyboard: [
                         [{
@@ -206,6 +205,51 @@ bot.onText(/\/clear/, (msg) => {
   }
 });
 
+//menu crash
+  bot.onText(/\/crash1/, (msg) => {
+  const chatId = msg.chat.id; 
+  if (isAdmin(msg.from.id)) {
+    addPremiumUser(userId);
+  bot.sendMessage(chatId, "Virus Crash Akun And Group Telegram 🦠👾\n\n" +
+    "🔥 Klik Tautan Di Bawah 🔥",
+    {
+      reply_markup: {
+        inline_keyboard: [
+          [
+            { text: '👾 SEND VIRUS CRASH 👾', url: 'tg://msg?text=https://youtu.be/IQW49GINvj4&to' }
+          ]
+        ]
+      },
+      parse_mode: "Markdown"
+    }
+    );  
+} else {
+    bot.sendMessage(msg.chat.id, 'Only admin can add premium users.');
+  }
+});
+
+bot.onText(/\/crash2/, (msg) => {
+  const chatId = msg.chat.id; 
+  if (isAdmin(msg.from.id)) {
+    addPremiumUser(userId);
+  bot.sendMessage(chatId, "Virus Crash Akun And Group Telegram 🦠👾\n\n" +
+    "🔥 Klik Tautan Di Bawah 🔥",
+    {
+      reply_markup: {
+        inline_keyboard: [
+          [
+            { text: '👾 SEND VIRUS CRASH 👾', url: 'tg://msg?text=https://youtu.be/IQW49GINvj4' }
+          ]
+        ]
+      },
+      parse_mode: "Markdown"
+    }
+  );
+} else {
+    bot.sendMessage(msg.chat.id, 'Only admin can add premium users.');
+  }
+});
+
 
 // Fungsi untuk memeriksa apakah pengguna adalah pengguna premium
 function isPremiumUser(userId) {
@@ -230,76 +274,5 @@ bot.onText(/\/cekprem (.+)/, (msg, match) => {
     bot.sendMessage(chatId, 'ID ' + requestedUserId + ' adalah pengguna non-premium. ⭐');
   }
 });
-
-// Fitur /cekid - Cek User ID Telegram Dari Username
-
-//donasi
-bot.onText(/\/donasi/, (msg) => {
-    bot.sendMessage(msg.chat.id, `Hi ingin donasi ya kak?\nNomor Dana 08xx\nOvo 08xx\nGopay\n`);
-
-// Kemudian kirim pesan donasi yang berisi data donasi:
-bot.sendMessage(adminId, `NAMA: ${donasiData.namaUser}\nID: ${donasiData.userId}\nNAMA: ${donasiData.username}\nPESAN: ${donasiData.pesan}`);
-
-
-
-
-//menu crash
-  bot.onText(/\/crash1/, (msg) => {
-  try {
-        const data = fs.readFileSync('premiumUsers.json', 'utf8');
-        const premiumUsers = new Set(JSON.parse(data)); // Baca data premiumUsers dari file JSON
-
-        if (premiumUsers.has(msg.from.id.toString())) {
-  const chatId = msg.chat.id;
-
-  // Menampilkan menu bot
-  bot.sendMessage(chatId, "Virus Crash Akun And Group Telegram 🦠👾\n\n" +
-    "🔥 Klik Tautan Di Bawah 🔥",
-    {
-      reply_markup: {
-        inline_keyboard: [
-          [
-            { text: '👾 SEND VIRUS CRASH 👾', url: 'tg://msg?text=https://youtu.be/IQW49GINvj4&to' }
-          ]
-        ]
-      },
-      parse_mode: "Markdown"
-    }
-  );
-});
-
-bot.onText(/\/crash2/, (msg) => {
-  try {
-        const data = fs.readFileSync('premiumUsers.json', 'utf8');
-        const premiumUsers = new Set(JSON.parse(data)); // Baca data premiumUsers dari file JSON
-
-        if (premiumUsers.has(msg.from.id.toString())) {
-  const chatId = msg.chat.id;
-
-  // Menampilkan menu bot
-  bot.sendMessage(chatId, "Virus Crash Akun And Group Telegram 🦠👾\n\n" +
-    "🔥 Klik Tautan Di Bawah 🔥",
-    {
-      reply_markup: {
-        inline_keyboard: [
-          [
-            { text: '👾 SEND VIRUS CRASH 👾', url: 'tg://msg?text=https://youtu.be/IQW49GINvj4' }
-          ]
-        ]
-      },
-      parse_mode: "Markdown"
-    }
-  );
-});
-
-
-  function isPremiumUser(userId) {
-    // Cek apakah userId ada di dalam premiumUsers
-    return premiumUsers.has(userId.toString());
-  }
-
   // Jalankan bot
-  bot.startPolling();
-} catch (error) {
-  console.error('Error:', error);
-}
+  bot.startPolling()
