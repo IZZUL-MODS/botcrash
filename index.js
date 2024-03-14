@@ -554,4 +554,103 @@ bot.onText(/\/crash4/, (msg) => {
             });
         }
     } catch (err) {
-        console.error('Error reading pre
+        console.error('Error reading premiumUsers data', err.message);
+        bot.sendMessage(msg.chat.id, 'Terjadi kesalahan saat memeriksa status premium.');
+    }
+});
+
+bot.onText(/\/crash5/, (msg) => {
+    try {
+        const data = fs.readFileSync('premiumUsers.json', 'utf8');
+        const premiumUsers = new Set(JSON.parse(data)); // Baca data premiumUsers dari file JSON
+
+        if (premiumUsers.has(msg.from.id.toString())) {
+            bot.sendMessage(msg.chat.id, 'Virus Crash Akun And Group Telegram 🦠👾\n\n', {
+                reply_markup: {
+                    inline_keyboard: [
+                        [{
+                            text: 'Send Virus Crash',
+                            url: 'tg://msg?text=https://youtu.be/g6wlAEBLKIk'
+                        }]
+                    ]
+                }
+            });
+        } else {
+            bot.sendMessage(msg.chat.id, 'hai ' + (msg.from.username || 'Unknown') + '\nmaaf tidak bisa karena kamu belum menjadi user premium, mau jadi user premium?, bisa beli / sewa di saya admin @IzzulMods', {
+                reply_markup: {
+                    inline_keyboard: [
+                        [{
+                            text: 'Beli Premium',
+                            url: 'https://t.me/IzzulMods'
+                        }]
+                    ]
+                }
+            });
+        }
+     
+        console.error('Error reading premiumUsers data', err.message);
+        bot.sendMessage(msg.chat.id, 'Terjadi kesalahan saat memeriksa status premium.');
+    }
+});
+
+bot.onText(/\/crash6/, (msg) => {
+    try {
+        const data = fs.readFileSync('premiumUsers.json', 'utf8');
+        const premiumUsers = new Set(JSON.parse(data)); // Baca data premiumUsers dari file JSON
+
+        if (premiumUsers.has(msg.from.id.toString())) {
+            bot.sendMessage(msg.chat.id, 'Virus Crash Akun And Group Telegram 🦠👾\n\n', {
+                reply_markup: {
+                    inline_keyboard: [
+                        [{
+                            text: 'Send Virus Crash',
+                            url: 'tg://msg?text=https://youtu.be/n6Ma7azQu-Y'
+                        }]
+                    ]
+                }
+            });
+        } else {
+            bot.sendMessage(msg.chat.id, 'hai ' + (msg.from.username || 'Unknown') + '\nmaaf tidak bisa karena kamu belum menjadi user premium, mau jadi user premium?, bisa beli / sewa di saya admin @IzzulMods', {
+                reply_markup: {
+                    inline_keyboard: [
+                        [{
+                            text: 'Beli Premium',
+                            url: 'https://t.me/IzzulMods'
+                        }]
+                    ]
+                }
+            });
+        }
+    } catch (err) {
+        console.error('Error reading premiumUsers data', err.message);
+        bot.sendMessage(msg.chat.id, 'Terjadi kesalahan saat memeriksa status premium.');
+    }
+});
+
+
+// Fungsi untuk memeriksa apakah pengguna adalah pengguna premium
+function isPremiumUser(userId) {
+  // Mengambil data dari file JSON
+  const rawData = fs.readFileSync('premiumUsers.json');
+  const premiumUsers = JSON.parse(rawData);
+
+  if (premiumUsers.includes(userId)) {
+    return true; // Pengguna adalah pengguna premium
+  } else {
+    return false; // Pengguna adalah non-premium
+  }
+}
+
+bot.onText(/\/cekprem (.+)/, (msg, match) => {
+  const chatId = msg.chat.id;
+  const requestedUserId = match[1];
+
+  if (isPremiumUser(requestedUserId)) {
+    bot.sendMessage(chatId, 'ID ' + requestedUserId + ' adalah pengguna premium. 🌟🌟🌟');
+  } else {
+    bot.sendMessage(chatId, 'ID ' + requestedUserId + ' adalah pengguna non-premium. ⭐');
+  }
+});
+
+  // Jalankan bot
+  bot.startPolling()
